@@ -57,7 +57,7 @@ class DataPreparation:
         :param path_output:
         :return:
         """
-        data_frame.repartition(1).write.mode('overwrite').parquet(path_output)
+        data_frame.write.mode('overwrite').parquet(path_output)
 
     def main(self):
         print("Iniciando processo de preparacao dos dados (ETL). . .")
@@ -75,5 +75,3 @@ if __name__ == '__main__':
                          json_schema_path='config/types_mapping.json',
                          output_path='data/output/')
     dp.main()
-    a = spark.read.parquet('/home/linux/Desktop/cognitivo_ai/data/output/')
-    print(a.show())
